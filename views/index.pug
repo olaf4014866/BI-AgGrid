@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  .container
+  div.login-div
+    h1 Login
+    p.lead
+      | Sign in with your account. Don’t have one?
+      a(href='register') Register Now.
+      form(action="../main", method="post")
+        .form-group
+          label(for='username') Username
+          input.form-control(type='text', id='username', name='username', placeholder='Enter a username')
+        .form-group
+          label(for='password') Password
+          input.form-control(type='password', id='password', name='password', placeholder='Enter a password')
+        button.btn.btn-primary(type='submit' id="submit") Submit
+        a.btn.btn-default(role='button', href='/') Cancel
+  script(src="/javascripts/login.js")
+
+  //-  action="../main", method="post"

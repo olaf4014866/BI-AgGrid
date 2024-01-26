@@ -1,0 +1,71 @@
+extends layout
+
+block content
+  div(class="grid-stack" data-gs-disableDrag=true data-gs-disableResize=true)
+    div(class="grid-stack-item gridOption" id="gridOptinsDiv")
+      div(class="grid-stack-item-content list-div")
+        label Start Date:
+        input(type="date" id="startDate") 
+        label End Date:
+        input(type="date" id="endDate")
+        button(type="button" id="btn-gen" class="btn btn-primary" size="sm") Generate
+        label Frequency:
+        select(id="dailyType")
+          option(value="Daily") Daily
+          option(value="Weekly") Weekly
+          option(value="Monthly") Monthly
+          option(selected value="Quarterly") Quarterly
+          option(value="Yearly") Yearly
+        label Property:
+        select(id="property")
+        label Split Function:
+        select(id="split")
+    div(class="grid-stack-item"  data-gs-no-move="true" id="agGridDiv")
+      div(class="grid-stack-item-content")
+        div(id="myGrid", class="ag-theme-balham", style="height: 100%;")
+    div(class="grid-stack-item" id="timeSeriesPlotsDiv")
+      div(class="grid-stack-item-content")
+        h4 Time-Series Plots
+        div(style="width: 100%")
+          select(id="left1" style="width: 50%")
+            option(value="none") None
+          select(id="right1" style="width: 50%")
+            option(value="none") None
+        button(class="btn btn-primary btn-create" id="btn-create-stp") Create Plot
+    div(class="grid-stack-item" id="breakDownPlotsDiv")
+      div(class="grid-stack-item-content")
+        h4 Breakdown Plots
+        div
+          select(id="left2" style="width: 50%")
+            option(selected value="none") None
+          select(id="right2" style="width: 50%")
+            option(selected value="none") None
+        button(class="btn btn-primary btn-create" id="btn-create-bdp") Create Plot
+    div(class="grid-stack-item" id="formulasDiv")
+      div(class="grid-stack-item-content")
+        button(class="btn btn-primary btn-refresh") Refresh
+    div(class="grid-stack-item" id="importDiv")
+      div(class="grid-stack-item-content")
+        button(class="btn btn-primary btn-import") Import Data
+    div(class="grid-stack-item" id="layoutDiv")
+      div(class="grid-stack-item-content" style="display: flex; justify-content: space-around;")
+        button(class="btn btn-primary" id="saveLayoutBtn") Save Layout
+        button(class="btn btn-primary" id="resetLayoutBtn") Reset Layout
+    //- div(id="trash" class="grid-stack-item" data-gs-height="3" data-gs-width="4" data-gs-no-move="yes" data-gs-no-resize="yes" data-gs-locked="yes")
+    //-   div(class="trash")
+  script.
+    var token = "#{token}";
+    localStorage.setItem('biwithaggrid', token);
+    console.log(localStorage.getItem('biwithaggrid'));
+  script(src="https://unpkg.com/popper.js@1")
+  script(src="https://unpkg.com/tippy.js@5")
+  script(src='https://unpkg.com/@ag-grid-enterprise/all-modules@22.1.2/dist/ag-grid-enterprise.min.js')
+  script(src="https://unpkg.com/ag-charts-community/dist/ag-charts-community.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js")
+  script(src="https://cdn.jsdelivr.net/npm/gridstack@1.1.1/dist/gridstack.all.js")
+  script(src="/javascripts/Common.js")
+  script(src="/javascripts/CustomStatusBarComponent.js")
+  script(src="/javascripts/index.js")
+  script(src="/javascripts/gridStack.js")
+
+  //- <div class="grid-stack-item ui-draggable ui-resizable ui-resizable-autohide ui-draggable-disabled ui-resizable-disabled" data-gs-x="4" data-gs-y="0" data-gs-width="4" data-gs-height="4" data-gs-no-move="true" data-gs-no-resize="true" data-gs-locked="true">

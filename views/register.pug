@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .container
+    .row
+      .col-lg-10.col-xl-9.mx-auto
+        .card.card-signin.flex-row.my-5
+          .card-img-left.d-none.d-md-flex
+          // Background image for card set in CSS!
+          .card-body
+            h5.card-title.text-center Register
+            form.form-signin(role='form', action='/users/register', method='post')
+              .form-label-group
+                input#inputUserame.form-control(type='text', placeholder='Username', required='', autofocus='', name="username")
+                label(for='inputUserame') Username
+              hr
+              .form-label-group
+                input#inputPassword.form-control(type='password', placeholder='Password', required='', name="password1")
+                label(for='inputPassword') Password
+              .form-label-group
+                input#inputConfirmPassword.form-control(type='password', placeholder='Password', required='', name="password2")
+                label(for='inputConfirmPassword1') Confirm password
+              button.btn.btn-lg.btn-primary.btn-block.text-uppercase(type='submit') Register
+              a.d-block.text-center.mt-2.medium(href='login') Log In
+              hr.my-4
+  //- script(src="/javascripts/register.js")
